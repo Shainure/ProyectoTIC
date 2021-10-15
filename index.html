@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>SnapCAt</title>
+
+</head>
+
+<body>
+
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.html" class="nav-link px-2 text-secondary">Inicio</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Foro</a></li>
+                    <li><a href="about.html" class="nav-link px-2 text-white">Sobre nosotros</a></li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                        aria-label="Search">
+                </form>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <section>
+            <div>
+                <h1 >Titulo</h1>
+                <p >***Descripción del sitio***</p>
+            </div>
+            <p>
+                <button type="button">
+                    Subir foto
+                </button>
+            </p>
+        </section>
+
+
+        <div class="album py-6 bg-light">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                    <div class="col">
+                        <div class="card shadow-sm">
+
+                            <img src="" alt="*foto*" class="card-img" width="100%" height="225">
+
+                            
+                                        <button type="button">Ver</button>
+                                        <button type="button">Editar</button>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p class="mb-1">Proyecto final para el ciclo 3 - Misión TIC 2022 UNAB</p>
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- Formulario subir foto -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subir nueva foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body">
+                    <div id="wrapper" class="clearfix">
+                        <div class="well">
+                            <form name="nuevaFoto" novalidate>
+                                <div class="form-horizontal">
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <input type="file" class="form-control col-sm-4" id="customFile" accept=".jpg, .jpeg, .png" />
+                                        </div>
+
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-md-10" syle="margin-top:5px;">
+                                            <label for="PET_Detalles">Descripción</label>
+                                            <textarea class="form-control" id="PET_Detalles" rows="3"
+                                                placeholder="¡Cuentanos más sobre tu mascota!"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="PET_Nombre">Nombre</label>
+                                            <input type="text" class="form-control" name="PET_Nombre"
+                                                ng-model="PET_Nombre" ng-minlength="3" placeholder="Ingresa el nombre"
+                                                required />
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="PET_Genero">Género</label>
+                                            <select class="form-control" id="PET_Genero">
+                                                <option>Sin especificar</option>
+                                                <option>Macho</option>
+                                                <option>Hembra</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="PET_Edad">Nacimiento</label>
+                                            <input type="number" ng-model="PET_Edad" name="PET_Edad"
+                                                class="form-control" placeholder="DD/MM/AAA" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+
+
+</body>
+
+</html>
