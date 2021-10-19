@@ -27,10 +27,9 @@ function uploadSingleFile(descripcion, name, genero, nacimiento, file) {
         var response = JSON.parse(xhr.responseText);
         if (xhr.status == 200) {
             singleFileUploadError.style.display = "none";
-            singleFileUploadSuccess.innerHTML = "Imagen subida correctamente.";
-
             clearBoxes();
-            singleFileUploadSuccess.style.display = "block";
+            alert("¡Imagen subida correctamente!");            
+            location.reload();
         } else {
             singleFileUploadSuccess.style.display = "none";
             singleFileUploadError.innerHTML = (response && response.message) || "Hubo un error al subir el archivo :(";
@@ -41,19 +40,12 @@ function uploadSingleFile(descripcion, name, genero, nacimiento, file) {
 
 document.getElementById("enviar").addEventListener("click", function () {
     var files = customFile.files;
-
-    console.log("listener2");
-
     singleFileUploadSuccess.innerHTML = "";
-
-    console.log("1 desc: " + descripcion + " name: " + name + " gen: " + genero + " nac: " + nacimiento);
 
     var descripcion = document.getElementById('descripcion').value;
     var name = document.getElementById('name').value;
     var genero = document.getElementById('genero').value;
     var nacimiento = document.getElementById('nacimiento').value;
-
-    console.log("2 desc: " + descripcion + " name: " + name + " gen: " + genero + " nac: " + nacimiento);
 
     if (files.length === 0) {
         singleFileUploadError.innerHTML = "Por favor elije un archivo";
@@ -61,7 +53,6 @@ document.getElementById("enviar").addEventListener("click", function () {
     }
 
     uploadSingleFile(descripcion, name, genero, nacimiento, files[0]);
-    //event.preventDefault();  
 });
 
 //#endregion
@@ -70,15 +61,15 @@ document.getElementById("enviar").addEventListener("click", function () {
 
 function cargarFotos() {
     let container = document.getElementById('cascada'); //Container para cargar las imágenes
-    var bloque = "";
+    let bloque = "";
 
-    var formData = new FormData();
-    var xhr = new XMLHttpRequest();
+    let formData = new FormData();
+    let xhr = new XMLHttpRequest();
     xhr.open("GET", "/get");
 
     xhr.onload = function () {
 
-        var response = JSON.parse(xhr.responseText);
+        let response = JSON.parse(xhr.responseText);
         if (xhr.status == 200) {
             container.innerHTML = "";
 
@@ -90,12 +81,11 @@ function cargarFotos() {
 
             for (let i = 0; i < filas; i++) {
                 let fila = '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">\n';
-
                 let aux = 0;
+
                 while (aux < cantColumnas) {
                     if (datosFlag < response.length) {
-                        //console.log("Response: ")
-                        var fecPub = getPublicado(response[datosFlag].date_entry);
+                        let fecPub = getPublicado(response[datosFlag].date_entry);
                         //#region  div carta
                         card = '    <div class="col"> \n';
                         card += '       <div class = "card shadow-sm"> \n';
@@ -108,7 +98,6 @@ function cargarFotos() {
                         card += '                   <div class ="btn-group" id="' + response[datosFlag].id + '"> \n';
                         card += '                       <button type ="button" id="verInfo" class ="btn btn-sm btn-outline-secondary"';
                         card += ' data-bs-toggle="modal" data-bs-target="#modalVer" >Ver</button> \n';
-                        //'                     <button type ="button" class ="btn btn-sm btn-outline-secondary">Edit</button> \n'+
                         card += '                   </div> \n';
                         card += '                   <small class ="text-muted"> ' + fecPub + ' </small> \n'; //tiempo de publicado
                         card += '               </div> \n';
@@ -116,7 +105,7 @@ function cargarFotos() {
                         card += '       </div> \n';
                         card += '   </div>\n';
                         //#endregion
-                        console.log(response[datosFlag].responseURL);
+
                         fila += card + "\n";
                         datosFlag++;
                     }
@@ -163,7 +152,6 @@ function verInformacion(id) {
         if (xhr.status == 200) {
             var response = JSON.parse(xhr.responseText);
 
-
             document.getElementById("verTitulo").innerHTML = "¡Conoce a " + response.name + "!";
             document.getElementById("catoName").value = response.name;
             document.getElementById("catoGen").value = response.genero;
@@ -188,7 +176,7 @@ function getAge(dateString) {
     let age = today.getFullYear() - birthDate.getFullYear();
     let m = today.getMonth() - birthDate.getMonth();
     let d = today.getDate() - birthDate.getDate();
-    //console.log(age + " - "+ m + " - "+ d);
+
     let edad = age + " año(s)";
 
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
@@ -209,6 +197,7 @@ function getPublicado(date_entry) {
 
     let fechaReg = new Date(date_entry.slice(0, -10));
     let fechaActual = new Date();
+
     fechaActual = new Date(fechaActual.getUTCFullYear(), fechaActual.getUTCMonth(), fechaActual.getUTCDate(),
         fechaActual.getUTCHours(), fechaActual.getUTCMinutes(), fechaActual.getUTCSeconds());
 

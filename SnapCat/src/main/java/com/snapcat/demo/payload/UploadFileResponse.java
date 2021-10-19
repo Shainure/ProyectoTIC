@@ -12,21 +12,7 @@ public class UploadFileResponse {
     private long size;
 
 
-    //Clase para la subida dle archivo
-
-    /*
-    public UploadFileResponse(String name, String fileName, String fileDownloadUri, String fileType, long size) {
-        this.fileName = fileName;
-        this.fileDownloadUri = fileDownloadUri;
-        this.fileType = fileType;
-        this.size = size;
-    }*/
-
-    
-
-    public String getName() {
-        return name;
-    }
+    //Clase para la subida dle archivo   
 
     public UploadFileResponse(String descripcion, String genero, String name, String nacimiento, String fileName,
             String fileDownloadUri, String fileType, long size) {
@@ -62,6 +48,10 @@ public class UploadFileResponse {
 
     public void setNacimiento(String nacimiento) {
         this.nacimiento = nacimiento;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {

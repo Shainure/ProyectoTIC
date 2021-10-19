@@ -45,11 +45,6 @@ public class DBFile {
     public DBFile() {
 
     }
-    /*
-     * public DBFile(String name, String fileName, String fileType, byte[] data) {
-     * this.name = name; this.fileName = fileName; this.fileType = fileType;
-     * this.data = data; }
-     */
 
     public DBFile(String id, String descripcion, String name, String genero, String nacimiento, String fileName, String fileType,
             byte[] data, Date date_entry) {
