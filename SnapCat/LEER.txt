@@ -1,0 +1,2 @@
+Los recursos de la página se encuentran en: 
+\src\main\resources\static

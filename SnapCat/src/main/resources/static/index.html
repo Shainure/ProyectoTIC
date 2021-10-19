@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SnapCAt</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body onload="cargarFotos();">
+
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="img/icon.png" alt="Logo" style="width: 50px; margin-right: 20px;">
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.html" class="nav-link px-2 text-secondary">Inicio</a></li>
+                    <li><a href="about.html" class="nav-link px-2 text-white">Sobre nosotros</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!------- INICIO - SUBIR IMÁGENES ------->
+
+
+    <main>
+
+        <section class="py-5 text-center container">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">SnapCat</h1>
+                <p class="lead text-muted">
+                    Un sitio web inspirado en la aplicación móvil “Snapchat”. Este lugar está dedicado para subir fotos
+                    / selfies de tu mascota; específicamente gatos. <br>
+                    ¡Porque ellos también merecen su espacio!
+                </p>
+            </div>
+            <div class="upload-response" style="font-size: 20px; font-weight: bold;">
+                <div id="singleFileUploadError" style="color: red;"></div>
+                <div id="singleFileUploadSuccess" style="color: green"></div>
+            </div>
+            <p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Subir foto
+                </button>
+            </p>
+        </section>
+
+
+
+        <!------- CASCADA IMÁGENES ------->
+
+
+
+        <div class="album py-6 bg-light">
+            <div class="container">
+
+                <div id="cascada">
+                    <br>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-1">
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+
+                                <img src="img/NoDisponible.jpg" class="card-img" width="100%" height="500">
+                                <div class="card-body">
+                                    <p class="card-text">No se pudieron cargar las imágenes</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><br><br>
+
+                </div>
+            </div>
+
+    </main>
+
+
+
+    <main>
+        <section>
+
+        </section>
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p class="mb-1">Proyecto final para el ciclo 3 - Misión TIC 2022 UNAB</p>
+        </div>
+    </footer>
+
+
+
+
+
+    <!------- Formulario subir foto ------->
+
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="titulo" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titulo" ">Subir nueva foto</h5>
+                    <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="wrapper" class="clearfix">
+                        <div class="well">
+                            <form id="singleUploadForm" name="singleUploadForm" novalidate>
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="*"><span style="color: red;">*</span></label>
+                                            <input type="file" class="form-control col-sm-4" id="customFile"
+                                                accept=".jpg, .jpeg, .png" required />
+                                        </div>
+
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-md-12" syle="margin-top:5px;">
+                                            <label for="descripcion">Descripción <span
+                                                    style="color: red;">*</span></label>
+                                            <textarea class="form-control" id="descripcion" rows="5" maxlength="500"
+                                                placeholder="¡Cuentanos sobre tu mascota!" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Nombre <span style="color: red;">*</span></label>
+                                            <input type="text" class="form-control" id="name" ng-model="text"
+                                                ng-minlength="3" placeholder="¿Cómo se llama?" maxlength="30"
+                                                required />
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="genero">Género <span style="color: red;">*</span></label>
+                                            <select class="form-control" id="genero">
+                                                <option hidden value="Sin especificar">Elige una opción</option>
+                                                <option>Macho</option>
+                                                <option>Hembra</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="nacimiento">Fecha de nacimiento</label>
+                                            <input type="date" ng-model="date" id="nacimiento" class="form-control"
+                                                max="" />
+                                        </div>
+
+                                        <div>
+                                            <label for="*"><br><span style="color: red;"> *</span> Campos
+                                                obligatorios</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="enviar" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!------- Formuario ver foto ------->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalVer" tabindex="-1" role="dialog" aria-labelledby="verTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="verTitulo">¡Conoce a --!</h5>
+                    <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="https://i.imgur.com/Jvh1OQm.jpeg" alt="Foto" width="100%" id="catoFoto">
+                            </div>
+                            <div class="col-md-5 ml-auto">
+                                <label for="catoName">Nombre:</label>
+                                <input type="text" class="form-control" id="catoName" value="Nombre del cato"
+                                    readonly><br>
+
+                                <label for="catoGen">Género:</label>
+                                <input type="text" class="form-control" id="catoGen" value="Género del cato"
+                                    readonly><br>
+
+                                <label for="catoAge">Edad:</label>
+                                <input type="text" class="form-control" id="catoAge" value="edad del cato" readonly><br>
+
+                                <label for="catoDesc">Descripción:</label>
+                                <textarea class="form-control" id="catoDesc" rows="9" readonly>*descripción*</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        document.getElementById("nacimiento").max = date;
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+
+
+</body>
+
+</html>
